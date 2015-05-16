@@ -1,0 +1,22 @@
+{
+    "name": "struggle-for-php/sfp-backbeard",
+    "description": "middelware for Backbeard",
+    "license": "BSD-3-Clause",
+    "keywords": ["backbeard"],
+    "authors": [
+        {
+            "name": "sasezaki",
+            "email": "sasezaki@gmail.com",
+            "homepage": "http://github.com/sasezaki",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "sasezaki/backbeard": "dev-psr-7",
+        "zendframework/zend-servicemanager": "~2.4"        
+    },
+    "autoload": {
+        "psr-4": { "SfpBackbeard\\": "src/SfpBackbeard/" }
+    }
+}
