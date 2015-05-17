@@ -15,20 +15,21 @@ class Middleware
     
     public function __invoke($req, $res, $next)
     {
-        if ($this->getDispatch()->dispatch($req, $res)) {
-            return $res;
+        $dispatcher = $this->getDispatcher();
+        if ($dispatcher->dispatch($req, $res) !== false) {
+            return $dispatcher->getActionResponse();
         }
         
         return $next($req, $res);
     }
     
-    protected function getDispatch()
+    protected function getDispatcher()
     {
         $routingFactory = $this->serviceLocator->get('routing-factory');
         $view = $this->serviceLocator->get('view');
         $router = $this->serviceLocator->get('router');
         
-        $dispatch = new Dispatcher($routingFactory($this->serviceLocator), $view, $router);
-        return $dispatch;    
+        $dispatcher = new Dispatcher($routingFactory($this->serviceLocator), $view, $router);
+        return $dispatcher;    
     }    
 }
