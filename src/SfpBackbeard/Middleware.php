@@ -20,7 +20,7 @@ class Middleware
      */
     private $serviceLocator;
 
-    public function __construct(ServiceLocatorInterface $serviceLocator, $serivceLocatorKeys = null)
+    public function __construct(ServiceLocatorInterface $serviceLocator, $serivceLocatorKeys = array())
     {
         $this->serviceLocator = $serviceLocator;
         $this->keys = array_merge($this->keys, $serivceLocatorKeys);
