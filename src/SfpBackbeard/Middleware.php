@@ -30,8 +30,7 @@ class Middleware
     {
         $dispatcher = $this->getDispatcher();
         if ($dispatcher->dispatch($req, $res) !== false) {
-            $response = $dispatcher->getActionResponse();
-            return $response->end();
+            return $dispatcher->getActionResponse();
         }
         
         return $next($req, $res);
