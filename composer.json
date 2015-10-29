@@ -13,10 +13,19 @@
     ],
     "require": {
         "php": ">=5.5",
-        "sasezaki/backbeard": "^0.3",
+        "sasezaki/backbeard": "^0.4",
         "zendframework/zend-servicemanager": "~2.4"        
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4",
+        "satooshi/php-coveralls": "~0.6"
     },
     "autoload": {
         "psr-4": { "SfpBackbeard\\": "src/SfpBackbeard/" }
+    },
+    "autoload-dev": {
+        "psr-4":{
+            "SfpBackbeardTest\\":"tests"
+        }
     }
 }
