@@ -29,8 +29,9 @@ class Middleware
     public function __invoke($req, $res, $next)
     {
         $dispatcher = $this->getDispatcher();
-        if ($dispatcher->dispatch($req, $res) !== false) {
-            return $dispatcher->getActionResponse();
+        $dispatchResult = $dispatcher->dispatch($req, $res);
+        if ($dispatchResult->isDispatched() !== false) {
+            return $dispatchResult->getResponse();
         }
         
         return $next($req, $res);
