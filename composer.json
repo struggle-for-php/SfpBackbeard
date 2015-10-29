@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.5",
-        "sasezaki/backbeard": "~0.2",
+        "sasezaki/backbeard": "^0.3",
         "zendframework/zend-servicemanager": "~2.4"        
     },
     "autoload": {
