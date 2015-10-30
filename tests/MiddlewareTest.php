@@ -15,17 +15,19 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
         $locator = new ServiceManager;
         $locator->setFactory('routing-factory', function(){
             return function () {
-                yield '/foo' => function () {
-                    return 'hello';
+                yield '/hello' => function () {
+                    return ['name' => 'John'];
                 };
             };
         });
-        $request = ServerRequestFactory::fromGlobals()->withUri(new Uri('http://example.com/foo'));
+        $request = ServerRequestFactory::fromGlobals()->withUri(new Uri('http://example.com/hello'));
         $response = new Response;
+
+        chdir(__DIR__.'/_files');
 
         $middleware = new Middleware($locator);
         $response = $middleware($request, $response, null);
 
-        $this->assertEquals('hello', $response->getBody()->__toString());
+        $this->assertEquals('hello,John', $response->getBody()->__toString());
     }
 }

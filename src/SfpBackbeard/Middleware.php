@@ -55,7 +55,7 @@ class Middleware
     
     protected function getDefaultView()
     {
-        return new \Backbeard\View(getcwd().'/views');
+        return new \Backbeard\View(new \SfpStreamView\View(getcwd().'/views'));
     }
     
     protected function getDefaultRouter()
